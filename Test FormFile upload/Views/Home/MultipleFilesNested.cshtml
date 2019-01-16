@@ -1,0 +1,11 @@
+﻿@model MultipleFilesNestedViewModel
+<form asp-action="MultipleFilesNested" enctype="multipart/form-data">
+    <input asp-for="@Model.Id" type="hidden" />
+
+    @for (int i = 0; i < 2; i++)
+    {
+        <input asp-for="@Model.SingleFileViewModels[i].SingleFileId" type="hidden" />
+        <input asp-for="@Model.SingleFileViewModels[i].File" name="@Model.SingleFileViewModels[i].SingleFileId" />
+    }
+    <button type="submit">Submit</button>
+</form>
